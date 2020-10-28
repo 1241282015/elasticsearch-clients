@@ -1,15 +1,20 @@
 # ElasticSearch Clients
-### Opendistro for ES(Plugin)
+## Opendistro for ES(Plugin)
 
 By introducing the plugin, es could be easily manipulated by users. Features are 
-job scheduler, alerting, SQL, Performance Analyzer and so on. More to see 
-[details](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/#plugin-compatibility)      
+job scheduler, alerting, SQL, Performance Analyzer and so on. 
+
+Example to see ``src/main/java/ycl/services/Opendistro.java``
 
 
+##### Reference
+[Opendistro officials](https://opendistro.github.io/for-elasticsearch-docs/docs/install/plugins/#plugin-compatibility) 
+
+[Opendistro github](https://github.com/opendistro-for-elasticsearch/sql)
 
 
+## Embedded Client for ES
 
-### Embedded Client for ES
 By creating a node with the designated cluster name, communication could be 
 conducted through the node. 
 
@@ -20,8 +25,12 @@ cluster.
 - joining in and quiting from the cluster could make a fluctuation, which causes
 extra overhead of cluster.
 
+Example to see ``src/main/java/ycl/services/ElasticEmbedded.java``
 
+## Client for ES
 
-### Client for ES
 By establishing a terminal to connect ES cluster, communication between clients 
 and server could be conducted afterwards. Obviously, it is C/S architecture. 
+
+Example to see ``src/main/java/ycl/services/ElasticTerminal.java``
+
