@@ -13,13 +13,6 @@ Example to see ``src/main/java/ycl/services/Opendistro.java``
 [Opendistro github](https://github.com/opendistro-for-elasticsearch/sql)
 
 
-~~删除线~~
-
-## Embedded Client for ES
-
-
-
-
 ## Client(terminal) for ES
 
 By establishing a terminal to connect ES cluster, communication between clients 
@@ -36,3 +29,8 @@ transport: to provide basic connection and interaction with es server.
 high-level-client: to provide full-fledged features by taking advantage of transport dependency. It 
 provides more clients for user, such as index client, cluster client, task client, snapshotClient and 
 so on. 
+
+
+## Embedded Client for ES
+
+Not supported since es version 6+
