@@ -27,7 +27,17 @@ extra overhead of cluster.
 
 Example to see ``src/main/java/ycl/services/ElasticEmbedded.java``
 
-## Client for ES
+Dependencies: 
+- org.elasticsearch.client:transport
+- org.elasticsearch.client:elasticsearch-rest-high-level-client
+
+transport: to provide basic connection and interaction with es server. 
+
+high-level-client: to provide full-fledged features by taking advantage of transport dependency. It 
+provides more clients for user, such as index client, cluster client, task client, snapshotClient and 
+so on. 
+
+## Client(terminal) for ES
 
 By establishing a terminal to connect ES cluster, communication between clients 
 and server could be conducted afterwards. Obviously, it is C/S architecture. 

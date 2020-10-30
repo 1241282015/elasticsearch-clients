@@ -1,8 +1,10 @@
 package com.ycl.services;
 
+import org.apache.http.HttpHost;
 import org.elasticsearch.action.ActionType;
-import org.elasticsearch.action.admin.indices.create.AutoCreateAction;
+import org.elasticsearch.action.search.*;
 import org.elasticsearch.action.support.TransportAction;
+import org.elasticsearch.client.*;
 import org.elasticsearch.client.node.NodeClient;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.threadpool.ExecutorBuilder;
@@ -13,38 +15,28 @@ import org.elasticsearch.threadpool.ThreadPool;
 import java.util.HashMap;
 import java.util.Map;
 
-//@Service
+/**
+ * dependency(org.elasticsearch.client:elasticsearch-rest-high-level-client)
+ *
+ */
+@Service
 public class ElasticEmbedded implements InitializingBean {
 
-    NodeClient client;
-
-    Settings settings;
-    ExecutorBuilder[] args = {};
-    ThreadPool pool;
+    RestHighLevelClient client;
 
 
     public void afterPropertiesSet() throws Exception {
-        settings = Settings.builder()
-                .put("nodeName", "es-client-1-1")
-                .put("size", "10")
-                .put("queueSize", 10)
+        Node node = new Node(new HttpHost("localhost", 9200, "http"));
+        Node[] nodes = new Node[]{node};
+        this.client = new RestHighLevelClient(RestClient.builder(nodes));
+    }
 
-                .put("client.type", "")   //1: node  2: transport
-                .build();
-
-        ActionType actionType = new ActionType("bulk", null);
-//        Map<ActionType, TransportAction> actions = new HashMap<>();
-
-//        TransportAction transportAction = new TransportAction();
-
-
-//        actions.put(actionType, null);
-
-        pool = new ThreadPool(settings, args);
-        this.client = new NodeClient(settings, pool);
-
-//        this.client.initialize( actions, ()->{return "es-node-1-1";},null );
-
-
+    public Object search() throws Exception {
+        MultiSearchRequest request = new MultiSearchRequest().add(new SearchRequest("secisland"));
+        MultiSearchResponse res = this.client.msearch(request, RequestOptions.DEFAULT);
+        return res;
     }
 }
+
+
+

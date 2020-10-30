@@ -27,12 +27,31 @@
             <version>7.9.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.amazon.opendistroforelasticsearch.client/opendistro-sql-jdbc -->
         <dependency>
             <groupId>com.amazon.opendistroforelasticsearch.client</groupId>
             <artifactId>opendistro-sql-jdbc</artifactId>
             <version>1.10.1.1</version>
+            <scope>compile</scope>
+            <optional>true</optional>
         </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>7.9.0</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>transport</artifactId>
+            <version>7.9.0</version>
+            <scope>compile</scope>
+            <optional>true</optional>
+        </dependency>
+
+
 
     </dependencies>
 

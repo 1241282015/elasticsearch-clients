@@ -13,15 +13,19 @@ import com.ycl.services.entity.Response;
 
 import java.sql.*;
 import java.util.*;
+
+/**
+ * dependency: opendistro-sql-jdbc):
+ */
 @Service
-public class Opendistro implements InitializingBean {
+public class ElasticOdfesql implements InitializingBean {
 
     ConnectionImpl impl;
     ConnectionConfig.Builder configBuilder = ConnectionConfig.builder();
-    Logger logger = LoggerFactory.getLogger(Opendistro.class.toString(), LogLevel.WARN);
+    Logger logger = LoggerFactory.getLogger(ElasticOdfesql.class.toString(), LogLevel.WARN);
 
     /**
-     * 1. use opendistro:
+     * 1. use opendistro
      *      transport: used to interact with remote es server, see ApacheHttpTransportFactory
      *      protocol: used to do param and result conversion , see JsonHttpProtocol
      */
